@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel recommendation</title>
+  <link rel="stylesheet" href="./travel.css">
+</head>
+<body>
+   <nav>
+        <div id="leftLogo">
+            <a href="./index.html" id="homeLogo"></a>
+            <div>Travel bloom</div>
+        </div>
+        <div id="topMenu">
+            <ul>
+                <li><a href="./index.html" id="home">Home </a></li>
+                <li><a href="./about.html" id="about">About Us </a></li>
+                <li><a href="./contact.html" id="contact">Contact Us </a></li>
+            </ul>
+        </div>
+        <div id="rgtTopPannel">
+            <input type="text" id="travelInput" placeholder="Enter a destination or keyword">
+            <img id="magnifyingGlass" src="./magnifyingGlass.png">
+            <button id='btnSearch'>Search</button>
+            <button id='btnReset'>Reset</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="socialBtns">
+            <a href="tweeter.com" class="socialBtnsCls" id="tweeter"> </a>
+            <a href="facebook.com" class="socialBtnsCls" id="facebook"> </a>
+            <a href="intsegram.com" class="socialBtnsCls" id="intsegram"> </a>
+            <a href="youtube.com" class="socialBtnsCls" id="youtube"> </a>
+        </div>
+        <div id="midContent">
+            <div id="leftMidCont">
+                <h2>EXPLORE<br>DREAM<br>DESTINATION</h2>
+                <p>
+                    Our specialized departments offer a diversity of services.<br>
+                    Every department works independently to provide<br>
+                    the best service to our customers, <br>
+                    targeting their friendship and a long lasting relationship.
+                </p>
+                <button id='btnBook'>Book now</button>
+            </div>
+            <div id="rightMidCont">
+                <div id="countryList"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./travel_recommendation.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel recommendation</title>
+  <link rel="stylesheet" href="./travel.css">
+</head>
+<body>
+   <nav>
+        <div id="leftLogo">
+            <a href="./index.html" id="homeLogo"></a>
+            <div>Travel bloom</div>
+        </div>
+        <div id="topMenu">
+            <ul>
+                <li><a href="./index.html" id="home">Home </a></li>
+                <li><a href="./about.html" id="about">About Us </a></li>
+                <li><a href="./contact.html" id="contact">Contact Us </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="socialBtns">
+            <a href="tweeter.com" class="socialBtnsCls" id="tweeter"> </a>
+            <a href="facebook.com" class="socialBtnsCls" id="facebook"> </a>
+            <a href="intsegram.com" class="socialBtnsCls" id="intsegram"> </a>
+            <a href="youtube.com" class="socialBtnsCls" id="youtube"> </a>
+        </div>
+        <div id="midContent">
+            <div id="leftMidCont">
+                <h2>CONTACT US</h2>
+                <div id="formWrap">
+                    <form id="contactForm">
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" onclick="thankyou()">Submit</button>
+                    </form>
+                    <script>
+                        function thankyou(){
+                            alert('Thank you for contacting us!')
+                        }
+                    </script>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./travel_recommendation.js"></script>
+</body>
+</html>
