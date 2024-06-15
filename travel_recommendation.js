@@ -108,9 +108,10 @@ addPatientButton.addEventListener("click", addPatient);
                 const allCountries=data.countries;
                 for(let i = 0; i < allCountries.length; i++) {
                     const cities = allCountries[i].cities;
+                    console.log(cities);
                     cities.forEach((city) => {
                         console.log(city.name);
-                        if(city.name !=''&& city.name != 'undefined')
+                        if(city.name !='' && city.name != 'undefined')
                             resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${city.imageUrl}'><p class='cityName'>${city.name}</p><p class='cityDesc'>${city.description}</p><button class='cityBtn' id='city${city.id}'>Visit</button></div>`;
                     });
                 }
@@ -125,6 +126,7 @@ addPatientButton.addEventListener("click", addPatient);
       }
 
       function getOneCountry(data,countryName){
+        console.log(countryName);
         const resultDiv = document.getElementById('countryList');
         
         const country = data.countries.find(item => item.name.toLowerCase() === countryName);
