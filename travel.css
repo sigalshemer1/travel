@@ -205,9 +205,9 @@ nav {
   #leftMidCont{
     padding-left:40px;
     color:white;
-    width:50%;
-    float:left;
-    padding-top:50px;
+    width:100%;
+    display:inline-block;
+    padding-top:80px;
   }
 
   #leftMidCont2{
@@ -331,4 +331,32 @@ nav {
     padding:4px 8px;
     font-size:10px;
     font-weight:bold;
+}
+
+/*Contact form */
+
+#formWrap{
+    width:400px;
+    float:right;
+    
+    padding:7px;
+}
+
+#formWrap label{
+    font-size:12px;
+}
+
+#formWrap textarea, #formWrap input{
+    background-color:transparent;
+    border:1px solid white;
+    border-radius: 5px;
+    width:100%;
+    color:white;
+    margin-top:5px;
+}
+
+#formWrap button{
+    width:100%;
+    border: 1px solid #3e718a; 
+    border-radius: 5px;
 }
