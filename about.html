@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel recommendation</title>
+  <link rel="stylesheet" href="./travel.css">
+</head>
+<body>
+   <nav>
+        <div id="leftLogo">
+            <a href="./index.html" id="homeLogo"></a>
+            <div>Travel bloom</div>
+        </div>
+        <div id="topMenu">
+            <ul>
+                <li><a href="./index.html" id="home">Home </a></li>
+                <li><a href="./about.html" id="about">About Us </a></li>
+                <li><a href="./contact.html" id="contact">Contact Us </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="socialBtns">
+            <a href="tweeter.com" class="socialBtnsCls" id="tweeter"> </a>
+            <a href="facebook.com" class="socialBtnsCls" id="facebook"> </a>
+            <a href="intsegram.com" class="socialBtnsCls" id="intsegram"> </a>
+            <a href="youtube.com" class="socialBtnsCls" id="youtube"> </a>
+        </div>
+        <div id="midContent">
+            <div id="leftMidCont2">
+                <h2>ABOUT US</h2>
+                <p>
+                    Bloom Travel is one of the leading Tour Operators in Athens<br>
+                    providing comprehensive services for groups and individuals to the country.<br>
+                    Bloom Travel was first established in the year 2011 by qualified professionals <br>
+                    in the tourism industry.Holding places, people and customs through professional <br>
+                    guides, modern transportation, quality hotels, fine restaurants and other key vendors.
+                </p>
+                <div id="ourTeamContainer">
+                    <div id="titleTeam">
+                        <h3>Our<br>Team</h3>
+                    </div>
+                    <div id="teamResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./travel_recommendation.js"></script>
+    <script>
+        window.onload =getTeam;
+  </script>
+</body>
+</html>
