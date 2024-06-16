@@ -7,8 +7,7 @@ const beaches = [];
 const temMembers = [];
 
 
-/* get the team members tyo show on about us page */
-
+/* get the team members to show on about us page */
 function getTeam() {
         teamResults.innerHTML = '';
 
@@ -29,71 +28,10 @@ function getTeam() {
             teamResults.innerHTML = 'An error occurred while fetching data.';
           });
           
-      }
+}
 
-/*
-function addPatient() {
-    const name = document.getElementById("name").value;
-    const gender = document.querySelector('input[name="gender"]:checked');
-    const age = document.getElementById("age").value;
-    const condition = document.getElementById("condition").value;
+/* Show the country with all it's cities */
 
-    if (name && gender && age && condition) {
-      patients.push({ name, gender: gender.value, age, condition });
-      resetForm();
-      generateReport();
-    }
-  }
-
-  function resetForm() {
-    document.getElementById("name").value = "";
-    document.querySelector('input[name="gender"]:checked').checked = false;
-    document.getElementById("age").value = "";
-    document.getElementById("condition").value = "";
-  }
-
-  function generateReport() {
-    const numPatients = patients.length;
-    const conditionsCount = {
-      Diabetes: 0,
-      Thyroid: 0,
-      "High Blood Pressure": 0,
-    };
-    const genderConditionsCount = {
-      Male: {
-        Diabetes: 0,
-        Thyroid: 0,
-        "High Blood Pressure": 0,
-      },
-      Female: {
-        Diabetes: 0,
-        Thyroid: 0,
-        "High Blood Pressure": 0,
-      },
-    };
-
-    for (const patient of patients) {
-      conditionsCount[patient.condition]++;
-      genderConditionsCount[patient.gender][patient.condition]++;
-    }
-
-    report.innerHTML = `Number of patients: ${numPatients}<br><br>`;
-    report.innerHTML += `Conditions Breakdown:<br>`;
-    for (const condition in conditionsCount) {
-      report.innerHTML += `${condition}: ${conditionsCount[condition]}<br>`;
-    }
-
-    report.innerHTML += `<br>Gender-Based Conditions:<br>`;
-    for (const gender in genderConditionsCount) {
-      report.innerHTML += `${gender}:<br>`;
-      for (const condition in genderConditionsCount[gender]) {
-        report.innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
-      }
-    }
-  }
-
-addPatientButton.addEventListener("click", addPatient);
-*/
     function searchCountry() {
         const input = document.getElementById('travelInput').value.toLowerCase();
         const resultDiv = document.getElementById('countryList');
@@ -108,15 +46,13 @@ addPatientButton.addEventListener("click", addPatient);
                 const allCountries=data.countries;
                 for(let i = 0; i < allCountries.length; i++) {
                     const cities = allCountries[i].cities;
-                    console.log(cities);
                     cities.forEach((city) => {
-                        console.log(city.name);
                         if(city.name !='' && city.name != 'undefined')
                             resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${city.imageUrl}'><p class='cityName'>${city.name}</p><p class='cityDesc'>${city.description}</p><button class='cityBtn' id='city${city.id}'>Visit</button></div>`;
                     });
                 }
-            }else
-                getOneCountry(data,input);
+            }else{getOneCountry(data,input);}
+                
                 
           })
           .catch(error => {
@@ -152,27 +88,59 @@ addPatientButton.addEventListener("click", addPatient);
 
 
       function getRecommandation() {
-        let place='';
+
         const input = document.getElementById('travelInput').value.toLowerCase();
         const resultDiv = document.getElementById('countryList');
         resultDiv.innerHTML = '';
-        
-        if(input === 'countries' || input === 'country')
-            searchCountry();
-        
+        let category='';
+        //check if a category?
+        if(input != ''){
+            if(input === 'countries' || input === 'country'){
+                //case category country
+                searchCountry();
+            }else if(input === 'beaches' || input === 'beach'){
+                //case category beaches
+                getCategory("beaches");
+            }else if(input === 'temples' || input === 'temple'){
+                //case category temples
+                getCategory("temples");
+            }else{
+                //case is not category
+                freeSearch(input);
+            }
+        }
+      
 
+
+        //if yes - check if country?
+
+            //if yes show the countries + the cities details
+
+            //if beach or temple - show all the temples or beaches details
+
+        // if not category then iterate between the 3 categories.
+            //if countries then check the countries names and in every country checks the cities names.
+                // if a country then show all the cities of this country
+                // if a city show the city details
+            //if beaches or temples then iterate both categories until reaches the right item
+      }
+
+      function getCategory(category){
+        const resultDiv = document.getElementById('countryList');
+        resultDiv.innerHTML = '';
+        let place='';
         fetch('travel_recommendation_api.json')
           .then(response => response.json())
           .then(data => {
-            if(input === 'beaches' || input === 'beach')
+            if(category === 'beaches'){
                 place = data.beaches;
-            else(input === 'temples' || input === 'temple')
+            }else if(category === 'temples'){
                 place = data.temples;
-            
-            
+            }
+                
             if (place) {
                 for(let i = 0; i < place.length; i++)  {
-                    resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${place.imageUrl}'><p class='cityName'>${place.name}</p><p class='cityDesc'>${place.description}</p><button class='cityBtn' id='city${place.id}'>Visit</button></div>`;
+                    resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${place[i].imageUrl}'><p class='cityName'>${place[i].name}</p><p class='cityDesc'>${place[i].description}</p><button class='cityBtn' id='city${place[i].id}'>Visit</button></div>`;
                 }; 
             } 
             else {
@@ -183,11 +151,36 @@ addPatientButton.addEventListener("click", addPatient);
             console.error('Error:', error);
             resultDiv.innerHTML = 'An error occurred while fetching data.';
           });
-          
       }
 
+      function freeSearch(input){
+        let beaches=[];
+        let temples=[];
+        let countries=[];
+        let flag=0;
+        fetch('travel_recommendation_api.json')
+            .then(response => response.json())
+            .then(data => {
+                beaches= data.beaches;  
+                temples= data.temples;
+                countries = data.countries;
+            
+                for(let i = 0; i < beaches.length; i++)  {
+                    if(beaches[i].name != ''){
+                        for(let x=0 ;beaches[i].poss.length ; x++){
+                            
+                        }
+                        resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${place[i].imageUrl}'><p class='cityName'>${place[i].name}</p><p class='cityDesc'>${place[i].description}</p><button class='cityBtn' id='city${place[i].id}'>Visit</button></div>`;
+                    }
+                    
+                }; 
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            resultDiv.innerHTML = 'An error occurred while fetching data.';
+        });
+      }
 
+btnSearch.addEventListener('click', getRecommandation);
 
-        btnSearch.addEventListener('click', getRecommandation);
-
-        btnReset.addEventListener('click', resetCountry);
+btnReset.addEventListener('click', resetCountry);

@@ -145,26 +145,6 @@ nav {
     margin-right:10px;
   }
   
-  /*
-  #report,#result {
-    padding: 10px;
-    max-width: 400px;
-    word-wrap: break-word;
-  }
-#result{
-  height: 400px;
-  width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-}
-  #result img{
-    width: 200px;
-    height: 100px;
-  }
-  
-*/
   /* Left side bar of social media*/
 
   #socialBtns{
@@ -202,6 +182,13 @@ nav {
 
   /*  Mid content */
 
+  #leftMidContHome{
+    padding-left:40px;
+    color:white;
+    width:50%;
+    display:inline-block;
+    padding-top:80px;
+  }
   #leftMidCont{
     padding-left:40px;
     color:white;
