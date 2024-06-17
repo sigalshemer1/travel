@@ -63,8 +63,13 @@ function getTeam() {
 
       function getOneCountry(data,countryName){
         const resultDiv = document.getElementById('countryList');
-        
+       
         const country = data.countries.find(item => item.name.toLowerCase() === countryName);
+        const timeZone = country.timeZone;
+         
+        const options = { timeZone: timeZone, hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const theTime = new Date().toLocaleTimeString('en-US', options);
+        console.log("Current time in " + countryName + " is:", theTime);
         
         if (country) {
             const cities = country.cities;

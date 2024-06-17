@@ -4,6 +4,7 @@
         "id": 1,
         "name": "Australia",
         "poss": "australia, aostralia",
+        "timeZone": "Australia/Sydney",
         "cities": [
           {
             "id": "1",
@@ -23,6 +24,7 @@
         "id": 2,
         "name": "Japan",
         "poss": "japan, yapan",
+        "timeZone": "Asia/Tokyo",
         "cities": [
           {
             "id": "3",
@@ -42,6 +44,7 @@
         "id": 3,
         "name": "Brazil",
         "poss": "brazil,berazil",
+        "timeZone": "America/Sao_Paulo",
         "cities": [
           {
             "id": "5",
