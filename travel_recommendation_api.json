@@ -3,60 +3,57 @@
       {
         "id": 1,
         "name": "Australia",
+        "poss": "australia, aostralia",
         "cities": [
           {
             "id": "1",
             "name": "Sydney, Australia",
             "imageUrl": "sydney.jpg",
-            "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge.",
-            "poss": "sydney, sidny, sideney"
+            "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
           },
           {
             "id": "2",
             "name": "Melbourne, Australia",
             "imageUrl": "melborn.jpg",
-            "description": "A cultural hub famous for its art, food, and diverse neighborhoods.",
-            "poss": "melborne, melborn, melbourn"
+            "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
           }
         ]
       },
       {
         "id": 2,
         "name": "Japan",
+        "poss": "japan, yapan",
         "cities": [
           {
             "id": "3",
             "name": "Tokyo, Japan",
             "imageUrl": "tokyo.jpg",
-            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture.",
-            "poss": "tokyo, tokio, tokkyo"
+            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
           },
           {
             "id": "4",
             "name": "Kyoto, Japan",
             "imageUrl": "kyoto.jpg",
-            "description": "Known for its historic temples, gardens, and traditional tea houses.",
-            "poss": "kyoto, kioto, kiyyotto"
+            "description": "Known for its historic temples, gardens, and traditional tea houses."
           }
         ]
       },
       {
         "id": 3,
         "name": "Brazil",
+        "poss": "brazil,berazil",
         "cities": [
           {
             "id": "5",
             "name": "Rio de Janeiro, Brazil",
             "imageUrl": "rio.jpg",
-            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks.",
-            "poss": "rio de janeiro, rio, roi dejaneiro, rio de gsneiro"
+            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
           },
           {
             "id": "6",
             "name": "São Paulo, Brazil",
             "imageUrl": "sao-paulo.jpg",
-            "description": "The financial hub with diverse culture, arts, and a vibrant nightlife.",
-            "poss": "são saulo, sao paulo, son paolo"
+            "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
           }
         ]
       }

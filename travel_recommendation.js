@@ -62,7 +62,6 @@ function getTeam() {
       }
 
       function getOneCountry(data,countryName){
-        console.log(countryName);
         const resultDiv = document.getElementById('countryList');
         
         const country = data.countries.find(item => item.name.toLowerCase() === countryName);
@@ -89,7 +88,7 @@ function getTeam() {
 
       function getRecommandation() {
 
-        const input = document.getElementById('travelInput').value.toLowerCase();
+        const input = document.getElementById('travelInput').value.toLowerCase().trim();
         const resultDiv = document.getElementById('countryList');
         resultDiv.innerHTML = '';
         let category='';
@@ -109,20 +108,6 @@ function getTeam() {
                 freeSearch(input);
             }
         }
-      
-
-
-        //if yes - check if country?
-
-            //if yes show the countries + the cities details
-
-            //if beach or temple - show all the temples or beaches details
-
-        // if not category then iterate between the 3 categories.
-            //if countries then check the countries names and in every country checks the cities names.
-                // if a country then show all the cities of this country
-                // if a city show the city details
-            //if beaches or temples then iterate both categories until reaches the right item
       }
 
       function getCategory(category){
@@ -161,6 +146,7 @@ function getTeam() {
         let countries=[];
         let flag=0;
         let listNames;
+
         fetch('travel_recommendation_api.json')
             .then(response => response.json())
             .then(data => {
@@ -172,9 +158,8 @@ function getTeam() {
                 for(let i = 0; i < beaches.length; i++)  {
                     if(beaches[i].name != ''){
                         listNames=beaches[i].poss.split(',');
-                        for(let x=0 ;listNames.length ; x++){
-                           if(input===listNames[x]) {
-                            console.log ("same!");
+                        for(let x=0 ;x < listNames.length ; x++){
+                           if(input===listNames[x].trim()) {
                             flag=1;
                             resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${beaches[i].imageUrl}'><p class='cityName'>${beaches[i].name}</p><p class='cityDesc'>${beaches[i].description}</p><button class='cityBtn' id='city${beaches[i].id}'>Visit</button></div>`;
                             break;
@@ -182,15 +167,15 @@ function getTeam() {
                         }
                     }
                 }; 
-console.log("flag = " + flag);
+
                 //check temples
                 if(!flag){
                     for(let i = 0; i < temples.length; i++)  {
                         if(temples[i].name != ''){
                             listNames=temples[i].poss.split(',');
-                            for(let x=0 ;listNames.length ; x++){
-                               if(input===listNames[x]) {
-                                    flag=1;
+                            for(let x=0 ;x < listNames.length ; x++){
+                               if(input===listNames[x].trim()) {
+                                    flag=2;
                                     resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${temples[i].imageUrl}'><p class='cityName'>${temples[i].name}</p><p class='cityDesc'>${temples[i].description}</p><button class='cityBtn' id='city${temples[i].id}'>Visit</button></div>`;
                                     break;
                                 }
@@ -205,9 +190,11 @@ console.log("flag = " + flag);
                     for(let i = 0; i < countries.length; i++)  {
                         if(countries[i].name != ''){
                             listNames=countries[i].poss.split(',');
-                            for(let x=0 ;listNames.length ; x++){
-                               if(input===listNames[x]) {
-                                getOneCountry(data,listNames[x]);
+                            for(let x=0 ;x < listNames.length ; x++){
+                               if(input===listNames[x].trim()) {
+                                    flag=3;
+                                    getOneCountry(data,listNames[x]);
+                                    break;
                                }
                             }
                         }
@@ -215,12 +202,15 @@ console.log("flag = " + flag);
 
                 }
                 
-                
+                if(!flag){
+                    resultDiv.innerHTML = 'We could not find your search word. Please try with another name.';
+                }   
             })
             .catch(error => {
             console.error('Error:', error);
             resultDiv.innerHTML = 'An error occurred while fetching data.';
         });
+
       }
 
 btnSearch.addEventListener('click', getRecommandation);
