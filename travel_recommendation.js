@@ -154,33 +154,35 @@ function getTeam() {
       }
 
       function freeSearch(input){
+        const resultDiv = document.getElementById('countryList');
+        resultDiv.innerHTML = '';
         let beaches=[];
         let temples=[];
         let countries=[];
         let flag=0;
         let listNames;
-
-        
         fetch('travel_recommendation_api.json')
             .then(response => response.json())
             .then(data => {
                 beaches= data.beaches;  
                 temples= data.temples;
                 countries = data.countries;
-                
+
                 //check beaches
                 for(let i = 0; i < beaches.length; i++)  {
                     if(beaches[i].name != ''){
                         listNames=beaches[i].poss.split(',');
                         for(let x=0 ;listNames.length ; x++){
                            if(input===listNames[x]) {
-                                flag=1;
-                                resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${beaches[i].imageUrl}'><p class='cityName'>${beaches[i].name}</p><p class='cityDesc'>${beaches[i].description}</p><button class='cityBtn' id='city${beaches[i].id}'>Visit</button></div>`;
-                           }
+                            console.log ("same!");
+                            flag=1;
+                            resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${beaches[i].imageUrl}'><p class='cityName'>${beaches[i].name}</p><p class='cityDesc'>${beaches[i].description}</p><button class='cityBtn' id='city${beaches[i].id}'>Visit</button></div>`;
+                            break;
+                          }
                         }
                     }
                 }; 
-
+console.log("flag = " + flag);
                 //check temples
                 if(!flag){
                     for(let i = 0; i < temples.length; i++)  {
@@ -190,7 +192,8 @@ function getTeam() {
                                if(input===listNames[x]) {
                                     flag=1;
                                     resultDiv.innerHTML += `<div class='countryDiv'><img class='cityImg' src='${temples[i].imageUrl}'><p class='cityName'>${temples[i].name}</p><p class='cityDesc'>${temples[i].description}</p><button class='cityBtn' id='city${temples[i].id}'>Visit</button></div>`;
-                               }
+                                    break;
+                                }
                             }
                         }
                     }; 
